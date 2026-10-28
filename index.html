@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow | Task Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">✓</div>
+                <span>TaskFlow</span>
+            </div>
+
+            <p class="sidebar-label">WORKSPACE</p>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-link active">
+                    <span>▦</span> Dashboard
+                </a>
+
+                <a href="#tasks" class="nav-link">
+                    <span>☑</span> My Tasks
+                </a>
+
+                <a href="#task-form-section" class="nav-link">
+                    <span>＋</span> Add New Task
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-tip">
+                    <span>💡</span>
+                    <h3>Stay productive!</h3>
+                    <p>Small steps every day lead to big results.</p>
+                </div>
+
+                <p class="sidebar-footer">TaskFlow v2.0</p>
+            </div>
+        </aside>
+
+        <main class="main-area">
+
+            <header class="topbar">
+                <div>
+                    <p class="eyebrow">YOUR WORKSPACE</p>
+                    <h1>My Dashboard</h1>
+                    <p class="subtitle">Organize your tasks and achieve your goals.</p>
+                </div>
+
+                <button id="themeToggle" class="theme-toggle"
+                        type="button" aria-label="Switch to dark mode">
+                    🌙 <span>Dark Mode</span>
+                </button>
+            </header>
+
+            <section id="dashboard" class="dashboard">
+                <article class="stat-card total-card">
+                    <div class="stat-top">
+                        <span class="stat-icon">▤</span>
+                        <span class="stat-caption">ALL TASKS</span>
+                    </div>
+                    <h2 id="totalTasks">0</h2>
+                    <p>Total tasks created</p>
+                </article>
+
+                <article class="stat-card pending-card">
+                    <div class="stat-top">
+                        <span class="stat-icon">◷</span>
+                        <span class="stat-caption">IN PROGRESS</span>
+                    </div>
+                    <h2 id="pendingTasks">0</h2>
+                    <p>Tasks to complete</p>
+                </article>
+
+                <article class="stat-card completed-card">
+                    <div class="stat-top">
+                        <span class="stat-icon">✓</span>
+                        <span class="stat-caption">COMPLETED</span>
+                    </div>
+                    <h2 id="completedTasks">0</h2>
+                    <p>Tasks finished</p>
+                </article>
+            </section>
+
+            <section class="progress-section">
+                <div class="progress-heading">
+                    <div>
+                        <h2>Overall Progress</h2>
+                        <p>Keep going! Every completed task counts.</p>
+                    </div>
+
+                    <span id="progressPercentage" class="progress-percentage">
+                        0%
+                    </span>
+                </div>
+
+                <div
+                    class="progress-track"
+                    id="progressTrack"
+                    role="progressbar"
+                    aria-label="Task completion progress"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                >
+                    <div id="progressBar" class="progress-bar"></div>
+                </div>
+
+                <p id="progressMessage" class="progress-message">
+                    Add a task to start tracking your progress.
+                </p>
+            </section>
+
+            <div class="content-grid">
+
+                <section id="task-form-section" class="panel form-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">PLAN YOUR DAY</p>
+                            <h2 id="formHeading">Create a Task</h2>
+                        </div>
+                        <span class="heading-icon">＋</span>
+                    </div>
+
+                    <form id="taskForm">
+                        <label for="taskTitle">Task Title *</label>
+                        <input
+                            type="text"
+                            id="taskTitle"
+                            placeholder="What needs to be done?"
+                            maxlength="100"
+                            required
+                        >
+
+                        <label for="taskDescription">Description</label>
+                        <textarea
+                            id="taskDescription"
+                            placeholder="Add some details..."
+                            rows="3"
+                            maxlength="500"
+                        ></textarea>
+
+                        <div class="form-row">
+                            <div>
+                                <label for="taskPriority">Priority</label>
+                                <select id="taskPriority">
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label for="taskDate">Due Date</label>
+                                <input type="date" id="taskDate">
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" id="submitButton"
+                                    class="primary-button">
+                                + Add Task
+                            </button>
+
+                            <button type="button" id="cancelEdit"
+                                    class="secondary-button" hidden>
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section id="tasks" class="panel tasks-panel">
+                    <div class="panel-heading">
+                        <div>
+                            <p class="eyebrow">YOUR TO-DO LIST</p>
+                            <h2>My Tasks</h2>
+                        </div>
+
+                        <span id="visibleTaskCount" class="task-count">0 tasks</span>
+                    </div>
+
+                    <input
+                        type="search"
+                        id="searchInput"
+                        placeholder="⌕  Search your tasks..."
+                        aria-label="Search tasks"
+                    >
+
+                    <div class="filters" role="group" aria-label="Filter tasks">
+                        <button type="button" class="filter-btn active"
+                                data-filter="all">All</button>
+                        <button type="button" class="filter-btn"
+                                data-filter="pending">Pending</button>
+                        <button type="button" class="filter-btn"
+                                data-filter="completed">Completed</button>
+                    </div>
+
+                    <div id="taskList" class="task-list"></div>
+
+                    <div id="emptyMessage" class="empty-state" hidden>
+                        <div class="empty-icon">☑</div>
+                        <h3>No tasks found</h3>
+                        <p>Add a new task or change your search or filter.</p>
+                    </div>
+                </section>
+            </div>
+
+            <footer class="app-footer">
+                Built with HTML, CSS & JavaScript
+                <span>•</span>
+                Stay focused, stay productive.
+            </footer>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
