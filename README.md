@@ -2,7 +2,7 @@
 
 A responsive task management web app built with HTML, CSS and vanilla JavaScript.
 
-🔗 **Live Demo:** <your-github-pages-link>
+🔗 **Live Demo:** [https://sandhiya-s21.github.io/taskflow-task-manager/](https://sandhiya-s21.github.io/taskflow-task-manager/)
 
 ## Features
 - Add, edit, delete and complete tasks
@@ -17,11 +17,19 @@ A responsive task management web app built with HTML, CSS and vanilla JavaScript
 HTML5 · CSS3 (Grid, Flexbox, CSS variables) · JavaScript (ES6)
 
 ## Run Locally
-1. Clone the repo: `git clone https://github.com/<your-username>/<repo-name>.git`
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/Sandhiya-S21/taskflow-task-manager.git
+   ```
 2. Open `index.html` in your browser
 
-## Screenshots
-![TaskFlow](screenshot.png)
+## Output
+
+| Light Mode | Dark Mode |
+|:---:|:---:|
+| ![Light Mode](output/lightmode/01-dashboard.png) | ![Dark Mode](output/darkmode/01-dashboard.png) |
+
+📁 See all screenshots in the [output folder](output/).
 
 ## Future Improvements
 - Sort by due date / priority
